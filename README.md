@@ -12,7 +12,7 @@ Prerequisites: You will need `libusb` and [CMake](http://www.cmake.org/) install
 
 To build, you can just run these shell commands:
 
-    https://github.com/yurikleb/libuvc
+    git clone https://github.com/yurikleb/libuvc
     cd libuvc
     mkdir build
     cd build
