@@ -1207,6 +1207,7 @@ uvc_error_t uvc_scan_streaming(uvc_device_t *dev,
   size_t buffer_left, block_size;
   uvc_error_t ret, parse_ret;
   uvc_streaming_interface_t *stream_if;
+  int i;
 
   UVC_ENTER();
 
@@ -1235,7 +1236,7 @@ uvc_error_t uvc_scan_streaming(uvc_device_t *dev,
         buffer += block_size;
       }
   }
-  for (int i = 0; i < if_desc->bNumEndpoints != 0; i++) {
+  for (i = 0; i < if_desc->bNumEndpoints != 0; i++) {
      uvc_scan_streaming_endpoint(dev, info, if_desc, i);
   }
 

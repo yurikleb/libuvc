@@ -244,7 +244,7 @@ uvc_error_t uvc_query_stream_ctrl(
       ctrl->dwClockFrequency = devh->info->ctrl_if.dwClockFrequency;
 
     }
-    else
+    else if (len != 34) //not UVC 1.1
       ctrl->dwClockFrequency = devh->info->ctrl_if.dwClockFrequency;
 
 
@@ -544,6 +544,8 @@ void _uvc_populate_frame_ts_us(uvc_stream_handle_t *strmh, int packet_id) {
 		if (strmh->pts < strmh->hold_pts) {
 			strmh->pts_time_base += 1LL << 32;//get_dev_time_us(strmh, (1LL << 32));
 		}
+		if (strmh->pts > 0) //if pts is valid
+		{
 		strmh->frame_ts_us = strmh->dev_clk_start_host_us + get_dev_time_us(strmh, strmh->pts_time_base + pts);
 		int64_t host_ts;
 		get_precise_timestamp(&host_ts);
@@ -576,6 +578,7 @@ void _uvc_populate_frame_ts_us(uvc_stream_handle_t *strmh, int packet_id) {
 		//if (!((strmh->seq+1) % 60)) {
 		//	printf("host_ts - frame_time = %lld\n", time_diff);
 		//}
+		}
 
 	}
 }
