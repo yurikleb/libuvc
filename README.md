@@ -1,3 +1,6 @@
+This is a forked version of the `libuvc` library from [Pupil-labs](https://github.com/pupil-labs/libuvc)  
+With some tests and adjustmets for less standard USB video devices such as USB Microscopes
+
 `libuvc` is a cross-platform library for USB video devices, built atop `libusb`.
 It enables fine-grained control over USB video devices exporting the standard USB Video Class
 (UVC) interface, enabling developers to write drivers for previously unsupported devices,
