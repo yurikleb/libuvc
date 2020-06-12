@@ -1071,7 +1071,7 @@ uvc_error_t uvc_stream_start(
       }
 
 
-      if (endpoint_bytes_per_packet >= config_bytes_per_packet) {
+      if (endpoint_bytes_per_packet >= config_bytes_per_packet || endpoint_bytes_per_packet >= 1024) {
         printf("Estimated / selected altsetting bandwith : %zu / %zu. \n",config_bytes_per_packet,endpoint_bytes_per_packet);
 
         /* Transfers will be at most one frame long: Divide the maximum frame size
